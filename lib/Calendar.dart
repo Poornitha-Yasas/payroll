@@ -3,7 +3,7 @@ import 'package:payroll/main_menu.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarPage extends StatefulWidget {
-  const CalendarPage({Key? key}) : super(key: key);
+  const CalendarPage({super.key});
 
   @override
   State<CalendarPage> createState() => _CalendarPageState();
@@ -74,7 +74,7 @@ class _CalendarPageState extends State<CalendarPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => DashboardPage(),
+            builder: (context) => const DashboardPage(),
           ),
         );
       }
