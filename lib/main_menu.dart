@@ -72,7 +72,6 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
           ),
           const SizedBox(height: 10),
-          // Add more ListTiles as needed
         ],
       ),
     );
