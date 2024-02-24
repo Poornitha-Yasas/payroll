@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:payroll/Calendar.dart';
 
-
 class DashboardPage extends StatefulWidget {
-  const DashboardPage({super.key});
+  const DashboardPage({Key? key}) : super(key: key);
 
   @override
   State<DashboardPage> createState() => _DashboardPageState();
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  int _selectedIndex = 0; // Added this line
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +31,8 @@ class _DashboardPageState extends State<DashboardPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                      const CalendarPage()), //Navigate to Centers page
+                    builder: (context) => const CalendarPage(),
+                  ),
                 );
               },
               child: const Icon(
@@ -55,7 +56,7 @@ class _DashboardPageState extends State<DashboardPage> {
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(10),
               onPressed: () {
-
+                // Add functionality for Option 2
               },
               child: const Icon(
                 Icons.attach_money_sharp,
@@ -71,9 +72,39 @@ class _DashboardPageState extends State<DashboardPage> {
               Icons.arrow_forward_ios,
             ),
           ),
-          const SizedBox(height: 10),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.lightGreen,
+        onTap: _onItemTapped,
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      if (_selectedIndex == 0) {
+        // Navigate to the DashboardPage (Main Menu)
+        // Replace YourDashboardPage() with the actual widget or screen
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DashboardPage(),
+          ),
+        );
+      }
+    });
   }
 }
